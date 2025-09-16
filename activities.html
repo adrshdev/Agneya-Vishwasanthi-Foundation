@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activities | Agneya Vishwasanthi Foundation</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@tailwindcss/typography"></script>
+  <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3 { font-family: 'Merriweather', serif; }
+    .gold-text { color: #d4af37; }
+    .bg-spiritual { background: linear-gradient(to bottom right, #7b1f1f, #f57f17); } /* maroon → saffron */
+    .bg-cream { background-color: #fff3e0; }
+    .animate-fade-in-up { opacity: 0; transform: translateY(20px); animation: fadeInUp 1s forwards; }
+    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+    .animate-slow-spin { animation: slowSpin 60s linear infinite; }
+    @keyframes slowSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body class="bg-[#fffaf0] text-gray-900">
+
+  <!-- Navbar -->
+  <header class="fixed top-0 w-full bg-cream/95 backdrop-blur-md shadow-md z-50 border-b border-[#d4af37]/40">
+    <nav class="container mx-auto flex justify-between items-center py-4 px-6">
+      <h1 class="text-2xl font-bold gold-text">Agneya Vishwasanthi Foundation</h1>
+      <ul id="nav-links" class="hidden md:flex space-x-8 font-medium text-[#fff3e0]">
+        <li><a href="index.html" class="hover:text-[#d4af37] transition">Home</a></li>
+        <li><a href="about.html" class="hover:text-[#d4af37] transition">About</a></li>
+        <li><a href="activities.html" class="hover:text-[#d4af37] transition">Activities</a></li>
+        <li><a href="#gallery" class="hover:text-[#d4af37] transition">Gallery</a></li>
+        <li><a href="#contact" class="hover:text-[#d4af37] transition">Contact</a></li>
+      </ul>
+      <button id="hamburger" class="md:hidden text-2xl text-[#fff3e0]">☰</button>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="h-[50vh] flex items-center justify-center bg-spiritual relative text-center text-white">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10 max-w-3xl px-6">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">Our <span class="gold-text">Activities</span></h1>
+      <p class="text-lg md:text-xl opacity-95 animate-fade-in-up delay-200">
+        Explore our spiritual programs designed to awaken consciousness, nurture devotion, and serve the community.
+      </p>
+    </div>
+    <div class="absolute w-[300px] h-[300px] bg-[url('./assets/images/pngwing.com.png')] bg-contain bg-no-repeat opacity-20 animate-slow-spin"></div>
+  </section>
+
+  <!-- Activities Grid -->
+  <section class="py-20 bg-cream">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[#7b1f1f] gold-text">Our Programs</h2>
+      <div class="grid md:grid-cols-3 gap-10">
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-105 transition transform duration-500">
+          <h3 class="text-xl font-bold mb-4">🪷 Meditation Camps</h3>
+          <p class="text-gray-700">Guided meditation sessions to calm the mind, balance energies, and connect with the divine.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-105 transition transform duration-500">
+          <h3 class="text-xl font-bold mb-4">🪔 Seva Programs</h3>
+          <p class="text-gray-700">Community outreach and selfless service activities inspired by Dharma.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-105 transition transform duration-500">
+          <h3 class="text-xl font-bold mb-4">📜 Dharma Talks</h3>
+          <p class="text-gray-700">Spiritual discourses that illuminate the eternal truths of Sanatana Dharma.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-105 transition transform duration-500">
+          <h3 class="text-xl font-bold mb-4">🎶 Bhakti Satsangs</h3>
+          <p class="text-gray-700">Devotional gatherings with chanting, music, and discussion on spiritual topics.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-105 transition transform duration-500">
+          <h3 class="text-xl font-bold mb-4">🌿 Nature Retreats</h3>
+          <p class="text-gray-700">Reconnect with nature while deepening meditation and mindfulness practices.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-105 transition transform duration-500">
+          <h3 class="text-xl font-bold mb-4">🎓 Workshops</h3>
+          <p class="text-gray-700">Interactive workshops on Sanatana Dharma, meditation, and spiritual lifestyle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-spiritual text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6">Join Our Activities</h2>
+    <p class="max-w-xl mx-auto mb-8">
+      Participate in our programs and experience the essence of Dharma, devotion, and service.
+    </p>
+    <a href="contact.html" class="px-6 py-3 rounded-xl bg-[#d4af37] text-white font-semibold hover:bg-[#b8962c] transition">Register Now</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 bg-spiritual text-center text-gray-300 text-sm">
+    © 2025 Agneya Vishwasanthi Foundation. All Rights Reserved.
+  </footer>
+
+</body>
+</html>
