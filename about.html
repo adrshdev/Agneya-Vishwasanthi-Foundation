@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Vishwasanthi Foundation</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@tailwindcss/typography"></script>
+  <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3 { font-family: 'Merriweather', serif; }
+    .gold-text { color: #d4af37; }
+    .bg-spiritual { background: linear-gradient(to bottom right, #7b1f1f, #f57f17); } /* maroon → saffron */
+    .bg-cream { background-color: #fff3e0; }
+    .animate-fade-in-up { opacity: 0; transform: translateY(20px); animation: fadeInUp 1s forwards; }
+    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+    .animate-slow-spin { animation: slowSpin 60s linear infinite; }
+    @keyframes slowSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body class="bg-[#fffaf0] text-gray-900">
+
+  <!-- Navbar -->
+  <header class="fixed top-0 w-full bg-cream/95 backdrop-blur-md shadow-md z-50 border-b border-[#d4af37]/40">
+    <nav class="container mx-auto flex justify-between items-center py-4 px-6">
+      <h1 class="text-2xl font-bold gold-text">Vishwasanthi</h1>
+      <ul class="hidden md:flex space-x-8 font-medium text-[#fff3e0]">
+        <li><a href="index.html" class="text-[#fff3e0] hover:text-[#d4af37] transition">Home</a></li>
+        <li><a href="about.html" class="text-[#d4af37] font-semibold">About</a></li>
+        <li><a href="activities.html" class="hover:text-[#d4af37] transition">Activities</a></li>
+        <li><a href="gallery.html" class="hover:text-[#d4af37] transition">Gallery</a></li>
+        <li><a href="contact.html" class="hover:text-[#d4af37] transition">Contact</a></li>
+      </ul>
+      <button class="md:hidden text-2xl">☰</button>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="h-[60vh] flex items-center justify-center bg-spiritual relative text-center text-white">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10 max-w-3xl px-6">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">
+        About <span class="gold-text">Vishwasanthi Foundation</span>
+      </h1>
+      <p class="text-lg md:text-xl opacity-95 animate-fade-in-up delay-200">
+        Guided by Sanatana Dharma, we nurture inner transformation and collective harmony.
+      </p>
+    </div>
+    <div class="absolute w-[300px] h-[300px] bg-[url('https://i.ibb.co/2M9S4Yc/mandala-bg.png')] bg-contain bg-no-repeat opacity-20 animate-slow-spin"></div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section class="py-20 bg-cream">
+    <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div class="animate-fade-in-up">
+        <h2 class="text-3xl font-bold gold-text mb-4">Our Mission</h2>
+        <p class="text-gray-800 leading-relaxed">
+          Spread the eternal wisdom of Sanatana Dharma and create a world rooted in peace, compassion, and spiritual awakening.
+        </p>
+      </div>
+      <div class="animate-fade-in-up">
+        <h2 class="text-3xl font-bold gold-text mb-4">Our Vision</h2>
+        <p class="text-gray-800 leading-relaxed">
+          A harmonious society aligned with Dharma, balancing inner growth and service to humanity.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Journey / Timeline -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold gold-text mb-12">Our Journey</h2>
+      <div class="relative border-l-4 border-[#d4af37] pl-6 space-y-10 max-w-3xl mx-auto text-left">
+        <div class="animate-fade-in-up">
+          <h3 class="text-xl font-semibold text-[#7b1f1f]">🌱 Foundation</h3>
+          <p class="text-gray-700">Seeds of Vishwasanthi sown with the vision of sharing spiritual knowledge and collective service.</p>
+        </div>
+        <div class="animate-fade-in-up">
+          <h3 class="text-xl font-semibold text-[#7b1f1f]">🙏 Community Building</h3>
+          <p class="text-gray-700">Meditation camps, seva activities, and satsangs shaping a community of seekers.</p>
+        </div>
+        <div class="animate-fade-in-up">
+          <h3 class="text-xl font-semibold text-[#7b1f1f]">🌍 Expansion</h3>
+          <p class="text-gray-700">Programs reached more people with teachings of Sanatana Dharma and humanitarian service.</p>
+        </div>
+        <div class="animate-fade-in-up">
+          <h3 class="text-xl font-semibold text-[#7b1f1f]">✨ Today</h3>
+          <p class="text-gray-700">Guiding individuals and communities toward peace, dharma, and spiritual awakening.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-20 bg-spiritual text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6">Be Part of the Journey</h2>
+    <p class="max-w-xl mx-auto mb-8">
+      Join hands with us in spreading the light of Sanatana Dharma and creating a better world.
+    </p>
+    <a href="contact.html" class="px-6 py-3 rounded-xl bg-[#d4af37] text-white font-semibold hover:bg-[#b8962c] transition">Connect With Us</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 bg-spiritual text-center text-gray-300 text-sm">
+    © 2025 Vishwasanthi Foundation. All Rights Reserved.
+  </footer>
+
+</body>
+</html>
