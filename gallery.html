@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | Agneya Vishwasanthi Foundation</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@tailwindcss/typography"></script>
+  <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3 { font-family: 'Merriweather', serif; }
+    .gold-text { color: #d4af37; }
+    .bg-spiritual { background: linear-gradient(to bottom right, #7b1f1f, #f57f17); } /* maroon → saffron */
+    .bg-cream { background-color: #fff3e0; }
+    .animate-fade-in-up { opacity: 0; transform: translateY(20px); animation: fadeInUp 1s forwards; }
+    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+    .animate-slow-spin { animation: slowSpin 60s linear infinite; }
+    @keyframes slowSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    
+    /* Gallery specific styles */
+    .gallery-item {
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(123, 31, 31, 0.3);
+    }
+    .gallery-item img {
+      transition: transform 0.3s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal.active {
+      display: flex;
+    }
+    .modal-content {
+      max-width: 90vw;
+      max-height: 90vh;
+      position: relative;
+    }
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+    .modal-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+      background: rgba(212, 175, 55, 0.8);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+    }
+    .modal-close:hover {
+      background: #d4af37;
+    }
+    
+    /* Filter buttons */
+    .filter-btn {
+      transition: all 0.3s ease;
+    }
+    .filter-btn.active {
+      background: #d4af37;
+      color: white;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="bg-[#fffaf0] text-gray-900">
+
+  <!-- Navbar -->
+  <header class="fixed top-0 w-full bg-cream/95 backdrop-blur-md shadow-md z-50 border-b border-[#d4af37]/40">
+    <nav class="container mx-auto flex justify-between items-center py-4 px-6">
+      <h1 class="text-2xl font-bold gold-text">Agneya Vishwasanthi Foundation</h1>
+      <ul id="nav-links" class="hidden md:flex space-x-8 font-medium text-[#7b1f1f]">
+        <li><a href="index.html" class="hover:text-[#d4af37] transition">Home</a></li>
+        <li><a href="about.html" class="hover:text-[#d4af37] transition">About</a></li>
+        <li><a href="activities.html" class="hover:text-[#d4af37] transition">Activities</a></li>
+        <li><a href="gallery.html" class="text-[#d4af37] font-semibold">Gallery</a></li>
+        <li><a href="#contact" class="hover:text-[#d4af37] transition">Contact</a></li>
+      </ul>
+      <button id="hamburger" class="md:hidden text-2xl text-[#7b1f1f]">☰</button>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="h-[50vh] flex items-center justify-center bg-spiritual relative text-center text-white">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10 max-w-3xl px-6">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">
+        Sacred <span class="gold-text">Moments</span>
+      </h1>
+      <p class="text-lg md:text-xl opacity-95 animate-fade-in-up delay-200">
+        Witness the divine journey of spiritual growth, seva, and community harmony
+      </p>
+    </div>
+    <div class="absolute w-[300px] h-[300px] bg-[url('./assets/images/pngwing.com.png')] bg-contain bg-no-repeat opacity-20 animate-slow-spin"></div>
+  </section>
+
+  <!-- Filter Tabs -->
+  <section class="py-16 bg-cream">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12 gold-text">Gallery Categories</h2>
+      <div class="flex flex-wrap justify-center gap-4 mb-12">
+        <button class="filter-btn px-6 py-3 rounded-xl bg-white text-[#7b1f1f] font-semibold shadow-md hover:shadow-lg active" data-filter="all">All</button>
+        <button class="filter-btn px-6 py-3 rounded-xl bg-white text-[#7b1f1f] font-semibold shadow-md hover:shadow-lg" data-filter="meditation">🪷 Meditation</button>
+        <button class="filter-btn px-6 py-3 rounded-xl bg-white text-[#7b1f1f] font-semibold shadow-md hover:shadow-lg" data-filter="seva">🪔 Seva</button>
+        <button class="filter-btn px-6 py-3 rounded-xl bg-white text-[#7b1f1f] font-semibold shadow-md hover:shadow-lg" data-filter="satsang">🎶 Satsang</button>
+        <button class="filter-btn px-6 py-3 rounded-xl bg-white text-[#7b1f1f] font-semibold shadow-md hover:shadow-lg" data-filter="retreats">🌿 Retreats</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Meditation Images -->
+        <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="meditation">
+          <div class="h-64 bg-gradient-to-br from-[#7b1f1f] to-[#f57f17] flex items-center justify-center">
+            <div class="text-white text-center p-6">
+              <div class="text-6xl mb-4">🧘‍♀️</div>
+              <h3 class="text-xl font-bold">Morning Meditation</h3>
+              <p class="text-sm opacity-90 mt-2">Daily practice at sunrise</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="font-semibold text-[#7b1f1f] mb-2">Peaceful Awakening</h4>
+            <p class="text-sm text-gray-600">Community meditation sessions fostering inner peace and spiritual connection</p>
+          </div>
+        </div>
+
+        <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="meditation">
+          <div class="h-64 bg-gradient-to-br from-[#f57f17] to-[#ff8f00] flex items-center justify-center">
+            <div class="text-white text-center p-6">
+              <div class="text-6xl mb-4">🕉️</div>
+              <h3 class="text-xl font-bold">Om Chanting</h3>
+              <p class="text-sm opacity-90 mt-2">Sacred sound vibrations</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="font-semibold text-[#7b1f1f] mb-2">Divine Resonance</h4>
+            <p class="text-sm text-gray-600">Collective chanting sessions creating harmony and spiritual elevation</p>
+          </div>
+        </div>
+
+        <!-- Seva Images -->
+        <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="seva">
+          <div class="h-64 bg-gradient-to-br from-[#7b1f1f] to-[#8d4004] flex items-center justify-center">
+            <div class="text-white text-center p-6">
+              <div class="text-6xl mb-4">🍽️</div>
+              <h3 class="text-xl font-bold">Food Distribution</h3>
+              <p class="text-sm opacity-90 mt-2">Serving the community</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="font-semibold text-[#7b1f1f] mb-2">Annadaan Seva</h4>
+            <p class="text-sm text-gray-600">Providing meals to the underprivileged with love and devotion</p>
+          </div>
+        </div>
+
+        <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="seva">
+          <div class="h-64 bg-gradient-to-br from-[#8d4004] to-[#f57f17] flex items-center justify-center">
+            <div class="text-white text-center p-6">
+              <div class="text-6xl mb-4">📚</div>
+              <h3 class="text-xl font-bold">Education Support</h3>
+              <p class="text-sm opacity-90 mt-2">Knowledge distribution</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="font-semibold text-[#7b1f1f] mb-2">Vidya Daan</h4>
+            <p class="text-sm text-gray-600">Supporting education and spiritual learning in rural communities</p>
+          </div>
+        </div>
+
+        <!-- Satsang Images -->
+        <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="satsang">
+          <div class="h-64 bg-gradient-to-br from-[#7b1f1f] to-[#d4af37] flex items-center justify-center">
+            <div class="text-white text-center p-6">
+              <div class="text-6xl mb-4">🎵</div>
+              <h3 class="text-xl font-bold">Bhajan Evening</h3>
+              <p class="text-sm opacity-90 mt-2">Devotional music</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="font-semibold text-[#7b1f1f] mb-2">Divine Melodies</h4>
+            <p class="text-sm text-gray-600">Community gatherings filled with devotional songs and spiritual discourse</p>
+          </div>
+        </div>
+
+        <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="satsang">
+          <div class="h-64 bg-gradient-to-br from-[#d4af37] to-[#f57f17] flex items-center justify-center">
+            <div class="text-white text-center p-6">
+              <div class="text-6xl mb-4">🪘</div>
+              <h3 class="text-xl font-bold">Kirtan Session</h3>
+              <p class="text-sm opacity-90 mt-2">Call and response</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="font-semibold text-[#7b1f1f] mb-2">Sacred Rhythm</h4>
+            <p class="text-sm text-gray-600">Interactive devotional singing creating unity and joy</p>
+          </div>
+        </div>
+
+        <!-- Retreat Images -->
+        <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="retreats">
+          <div class="h-64 bg-gradient-to-br from-[#2e7d32] to-[#7b1f1f] flex items-center justify-center">
+            <div class="text-white text-center p-6">
+              <div class="text-6xl mb-4">🏔️</div>
+              <h3 class="text-xl font-bold">Mountain Retreat</h3>
+              <p class="text-sm opacity-90 mt-2">Nature immersion</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="font-semibold text-[#7b1f1f] mb-2">Himalayan Silence</h4>
+            <p class="text-sm text-gray-600">Spiritual retreat in the sacred mountains for deep meditation</p>
+          </div>
+        </div>
+
+        <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="retreats">
+          <div class="h-64 bg-gradient-to-br from-[#1976d2] to-[#2e7d32] flex items-center justify-center">
+            <div class="text-white text-center p-6">
+              <div class="text-6xl mb-4">🌊</div>
+              <h3 class="text-xl font-bold">River Retreat</h3>
+              <p class="text-sm opacity-90 mt-2">Flowing meditation</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="font-semibold text-[#7b1f1f] mb-2">Sacred Waters</h4>
+            <p class="text-sm text-gray-600">Riverside meditation and purification rituals</p>
+          </div>
+        </div>
+
+        <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="meditation">
+          <div class="h-64 bg-gradient-to-br from-[#7b1f1f] to-[#9c27b0] flex items-center justify-center">
+            <div class="text-white text-center p-6">
+              <div class="text-6xl mb-4">🕯️</div>
+              <h3 class="text-xl font-bold">Candle Meditation</h3>
+              <p class="text-sm opacity-90 mt-2">Trataka practice</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="font-semibold text-[#7b1f1f] mb-2">Inner Light</h4>
+            <p class="text-sm text-gray-600">Focused meditation with flame gazing for concentration</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Moments Section -->
+  <section class="py-20 bg-cream">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12 gold-text">Community Celebrations</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white rounded-2xl p-6 shadow-lg hover:scale-105 transition transform duration-300">
+          <div class="text-4xl mb-4">🎉</div>
+          <h3 class="font-semibold text-[#7b1f1f] mb-2">Festival Celebrations</h3>
+          <p class="text-sm text-gray-600">Traditional Hindu festivals celebrated with devotion</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-lg hover:scale-105 transition transform duration-300">
+          <div class="text-4xl mb-4">👨‍👩‍👧‍👦</div>
+          <h3 class="font-semibold text-[#7b1f1f] mb-2">Family Programs</h3>
+          <p class="text-sm text-gray-600">Activities that bring families together in spiritual growth</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-lg hover:scale-105 transition transform duration-300">
+          <div class="text-4xl mb-4">🌱</div>
+          <h3 class="font-semibold text-[#7b1f1f] mb-2">Youth Initiatives</h3>
+          <p class="text-sm text-gray-600">Empowering young minds with dharmic values</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-lg hover:scale-105 transition transform duration-300">
+          <div class="text-4xl mb-4">🤝</div>
+          <h3 class="font-semibold text-[#7b1f1f] mb-2">Community Outreach</h3>
+          <p class="text-sm text-gray-600">Extending our service beyond the foundation</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-20 bg-spiritual text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6">Be Part of Our Story</h2>
+    <p class="max-w-xl mx-auto mb-8">
+      Join our community and create beautiful memories while walking the path of Dharma
+    </p>
+    <div class="space-x-4">
+      <a href="activities.html" class="px-6 py-3 rounded-xl bg-[#d4af37] text-white font-semibold hover:bg-[#b8962c] transition">Join Activities</a>
+      <a href="#contact" class="px-6 py-3 rounded-xl border border-[#d4af37] text-[#d4af37] font-semibold hover:bg-[#d4af37] hover:text-white transition">Contact Us</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 bg-spiritual text-center text-gray-300 text-sm">
+    © 2025 Agneya Vishwasanthi Foundation. All Rights Reserved.
+  </footer>
+
+  <!-- Modal for Image Viewing -->
+  <div id="imageModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <img id="modalImage" src="" alt="Gallery Image">
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Intersection Observer for animations
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-fade-in-up");
+          }
+        });
+      });
+      
+      document.querySelectorAll(".gallery-item").forEach(el => observer.observe(el));
+
+      // Filter functionality
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Remove active class from all buttons
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          // Add active class to clicked button
+          button.classList.add('active');
+
+          const filter = button.getAttribute('data-filter');
+
+          galleryItems.forEach(item => {
+            const category = item.getAttribute('data-category');
+            if (filter === 'all' || category === filter) {
+              item.style.display = 'block';
+              setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+              }, 100);
+            } else {
+              item.style.opacity = '0';
+              item.style.transform = 'translateY(20px)';
+              setTimeout(() => {
+                item.style.display = 'none';
+              }, 300);
+            }
+          });
+        });
+      });
+
+      // Modal functionality (for future image implementation)
+      galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+          // This would open a modal with the actual image
+          // For now, it just shows a message
+          console.log('Gallery item clicked - Modal would open here');
+        });
+      });
+
+      // Hamburger menu functionality
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('nav-links');
+
+      if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+          navLinks.classList.toggle('hidden');
+          navLinks.classList.toggle('flex');
+          navLinks.classList.toggle('flex-col');
+          navLinks.classList.toggle('absolute');
+          navLinks.classList.toggle('top-full');
+          navLinks.classList.toggle('left-0');
+          navLinks.classList.toggle('w-full');
+          navLinks.classList.toggle('bg-cream');
+          navLinks.classList.toggle('shadow-lg');
+          navLinks.classList.toggle('py-4');
+        });
+      }
+    });
+
+    // Modal functions (for future use)
+    function openModal(imageSrc) {
+      const modal = document.getElementById('imageModal');
+      const modalImage = document.getElementById('modalImage');
+      modal.classList.add('active');
+      modalImage.src = imageSrc;
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.classList.remove('active');
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('imageModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+  </script>
+
+</body>
+</html>
