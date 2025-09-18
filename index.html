@@ -14,6 +14,37 @@
     .gold-text { color: #d4af37; }
     .bg-spiritual { background: linear-gradient(to bottom right, #7b1f1f, #f57f17); } /* maroon → saffron */
     .bg-lotus { background: url('https://i.ibb.co/2M9S4Yc/mandala-bg.png') center/cover no-repeat; }
+    
+    /* Logo effects */
+    .logo-glow {
+      animation: logoGlow 3s ease-in-out infinite alternate;
+    }
+    @keyframes logoGlow {
+      0% { 
+        opacity: 0.15; 
+        filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.6));
+        transform: scale(1);
+      }
+      100% { 
+        opacity: 0.25; 
+        filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.8));
+        transform: scale(1.05);
+      }
+    }
+    
+    .logo-pulse {
+      animation: logoPulse 2s ease-in-out infinite;
+    }
+    @keyframes logoPulse {
+      0%, 100% { 
+        transform: scale(1);
+        opacity: 0.1;
+      }
+      50% { 
+        transform: scale(1.1);
+        opacity: 0.15;
+      }
+    }
   </style>
 </head>
 <body class="bg-[#fffaf0] min-h-screen text-gray-900">
@@ -25,14 +56,16 @@
         <img src="./assets/images/agneya-01.png" alt="Agneya Vishwasanthi Foundation Logo" class="h-12 w-12 object-contain">
         <h1 class="text-2xl font-bold gold-text">Agneya Vishwasanthi Foundation</h1>
       </div>
-      <ul id="nav-links" class="hidden md:flex space-x-8 font-medium text-[#fff3e0]">
-        <li><a href="index.html" class="hover:text-[#d4af37] transition">Home</a></li>
-        <li><a href="about.html" class="hover:text-[#d4af37] transition">About</a></li>
-        <li><a href="activities.html" class="hover:text-[#d4af37] transition">Activities</a></li>
-        <li><a href="gallery.html" class="hover:text-[#d4af37] transition">Gallery</a></li>
-        <li><a href="contact.html" class="hover:text-[#d4af37] transition">Contact</a></li>
-      </ul>
-      <button id="hamburger" class="md:hidden text-2xl text-[#fff3e0]">☰</button>
+      <div class="hidden md:block bg-white/90 backdrop-blur-sm rounded-full px-8 py-2 shadow-lg border border-[#d4af37]/30">
+        <ul id="nav-links" class="flex space-x-8 font-medium text-[#7b1f1f]">
+          <li><a href="index.html" class="hover:text-[#d4af37] transition duration-300 px-3 py-2 rounded-lg hover:bg-[#d4af37]/10">Home</a></li>
+          <li><a href="about.html" class="hover:text-[#d4af37] transition duration-300 px-3 py-2 rounded-lg hover:bg-[#d4af37]/10">About</a></li>
+          <li><a href="activities.html" class="hover:text-[#d4af37] transition duration-300 px-3 py-2 rounded-lg hover:bg-[#d4af37]/10">Activities</a></li>
+          <li><a href="gallery.html" class="hover:text-[#d4af37] transition duration-300 px-3 py-2 rounded-lg hover:bg-[#d4af37]/10">Gallery</a></li>
+          <li><a href="contact.html" class="hover:text-[#d4af37] transition duration-300 px-3 py-2 rounded-lg hover:bg-[#d4af37]/10">Contact</a></li>
+        </ul>
+      </div>
+      <button id="hamburger" class="md:hidden text-2xl text-[#7b1f1f]">☰</button>
     </nav>
   </header>
 
@@ -51,8 +84,12 @@
       </a>
     </div>
 
-    <!-- Subtle mandala overlay -->
-    <div class="absolute w-[500px] h-[500px] bg-[url('./assets/images/agneya-01.png')] bg-contain bg-no-repeat opacity-20"></div>
+    <!-- Logo overlay with glow and pulse effect -->
+    <div class="absolute w-[400px] h-[400px] md:w-[500px] md:h-[500px]">
+      <img src="./assets/images/agneya-01.png" 
+           alt="Agneya Vishwasanthi Foundation Logo" 
+           class="w-full h-full object-contain logo-glow">
+    </div>
   </section>
 
   <!-- About Preview -->
@@ -90,7 +127,7 @@
   <!-- Quote -->
   <section class="py-20 bg-spiritual text-center text-white">
     <blockquote class="text-2xl md:text-3xl italic max-w-3xl mx-auto animate-fade-in-up">
-      “When Dharma shines within, the world outside becomes peaceful.”
+      "When Dharma shines within, the world outside becomes peaceful."
     </blockquote>
   </section>
 
@@ -101,7 +138,7 @@
       Walk the spiritual path with us — together in Dharma, Seva, and Bhakti.
     </p>
     <div class="space-x-4">
-      <a href="#" class="px-6 py-3 rounded-xl bg-[#d4af37] text-white font-semibold hover:bg-[#b8962c] transition">Contact Us</a>
+      <a href="contact.html" class="px-6 py-3 rounded-xl bg-[#d4af37] text-white font-semibold hover:bg-[#b8962c] transition">Contact Us</a>
       <a href="#" class="px-6 py-3 rounded-xl border border-[#d4af37] text-[#d4af37] font-semibold hover:bg-[#d4af37] hover:text-white transition">Donate</a>
     </div>
     <p class="mt-10 text-sm text-gray-400">© 2025 Agneya Vishwasanthi Foundation. All Rights Reserved.</p>
@@ -118,6 +155,36 @@
         });
       });
       document.querySelectorAll(".animate-fade-in-up").forEach(el => observer.observe(el));
+
+      // Hamburger menu functionality
+      const hamburger = document.getElementById('hamburger');
+      const navContainer = document.querySelector('.hidden.md\\:block');
+      const navLinks = document.getElementById('nav-links');
+
+      if (hamburger && navContainer && navLinks) {
+        hamburger.addEventListener('click', () => {
+          // Toggle mobile menu visibility
+          navContainer.classList.toggle('hidden');
+          navContainer.classList.toggle('block');
+          navContainer.classList.toggle('md:block');
+          
+          // Style for mobile
+          if (!navContainer.classList.contains('hidden')) {
+            navContainer.classList.add('absolute', 'top-full', 'left-6', 'right-6', 'mt-2');
+            navContainer.classList.remove('rounded-full');
+            navContainer.classList.add('rounded-xl');
+            navLinks.classList.remove('flex');
+            navLinks.classList.add('flex-col', 'space-y-2');
+            navLinks.classList.remove('space-x-8');
+          } else {
+            navContainer.classList.remove('absolute', 'top-full', 'left-6', 'right-6', 'mt-2', 'rounded-xl');
+            navContainer.classList.add('rounded-full');
+            navLinks.classList.add('flex');
+            navLinks.classList.remove('flex-col', 'space-y-2');
+            navLinks.classList.add('space-x-8');
+          }
+        });
+      }
     });
   </script>
 
@@ -133,13 +200,7 @@
         transform: translateY(0);
       }
     }
-    .animate-slow-spin {
-      animation: slowSpin 60s linear infinite;
-    }
-    @keyframes slowSpin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
+    .bg-cream { background-color: #fff3e0; }
   </style>
 
 </body>
