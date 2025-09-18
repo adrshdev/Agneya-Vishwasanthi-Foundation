@@ -24,23 +24,44 @@
 
   <!-- Navbar -->
   <header class="fixed top-0 w-full bg-cream/95 backdrop-blur-md shadow-md z-50 border-b border-[#d4af37]/40">
-    <nav class="container mx-auto flex justify-between items-center py-4 px-6">
-      <div class="flex items-center space-x-3">
-        <img src="./assets/images/agneya-01.png" alt="Agneya Vishwasanthi Foundation Logo" class="h-12 w-12 object-contain">
-        <h1 class="text-2xl font-bold gold-text">Agneya Vishwasanthi Foundation</h1>
-      </div>
-      <div class="hidden md:block bg-white/90 backdrop-blur-sm rounded-full px-8 py-2 shadow-lg border border-[#d4af37]/30">
-        <ul id="nav-links" class="flex space-x-8 font-medium text-[#7b1f1f]">
-          <li><a href="index.html" class="hover:text-[#d4af37] transition duration-300 px-3 py-2 rounded-lg hover:bg-[#d4af37]/10">Home</a></li>
-          <li><a href="about.html" class="hover:text-[#d4af37] transition duration-300 px-3 py-2 rounded-lg hover:bg-[#d4af37]/10">About</a></li>
-          <li><a href="activities.html" class="hover:text-[#d4af37] transition duration-300 px-3 py-2 rounded-lg hover:bg-[#d4af37]/10">Activities</a></li>
-          <li><a href="gallery.html" class="hover:text-[#d4af37] transition duration-300 px-3 py-2 rounded-lg hover:bg-[#d4af37]/10">Gallery</a></li>
-          <li><a href="contact.html" class="hover:text-[#d4af37] transition duration-300 px-3 py-2 rounded-lg hover:bg-[#d4af37]/10">Contact</a></li>
-        </ul>
-      </div>
-      <button id="hamburger" class="md:hidden text-2xl text-[#7b1f1f]">☰</button>
-    </nav>
-  </header>
+  <nav class="container mx-auto flex justify-between items-center py-3 px-4 md:px-6">
+    <!-- Logo + Title -->
+    <div class="flex items-center space-x-2 md:space-x-3 min-w-0">
+      <img src="./assets/images/agneya-01.png" alt="Logo" 
+           class="h-10 w-10 md:h-12 md:w-12 object-contain flex-shrink-0">
+      <h1 class="text-lg sm:text-xl md:text-2xl font-bold gold-text truncate whitespace-nowrap overflow-hidden text-ellipsis">
+        Agneya Vishwasanthi Foundation
+      </h1>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden lg:block bg-white/90 backdrop-blur-sm rounded-full px-6 py-2 shadow-lg border border-[#d4af37]/30">
+      <ul id="nav-links" class="flex space-x-6 font-medium text-[#7b1f1f]">
+        <li><a href="index.html" class="hover:text-[#d4af37] transition px-2 py-1">Home</a></li>
+        <li><a href="about.html" class="hover:text-[#d4af37] transition px-2 py-1">About</a></li>
+        <li><a href="activities.html" class="hover:text-[#d4af37] transition px-2 py-1">Activities</a></li>
+        <li><a href="gallery.html" class="hover:text-[#d4af37] transition px-2 py-1">Gallery</a></li>
+        <li><a href="contact.html" class="hover:text-[#d4af37] transition px-2 py-1">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button id="hamburger" class="lg:hidden text-3xl text-[#fff3e0] focus:outline-none">
+      ☰
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-white/95 backdrop-blur-md shadow-lg border-t border-[#d4af37]/30">
+    <ul class="flex flex-col p-4 space-y-3 text-center font-medium text-[#7b1f1f]">
+      <li><a href="index.html" class="hover:text-[#d4af37]">Home</a></li>
+      <li><a href="about.html" class="hover:text-[#d4af37]">About</a></li>
+      <li><a href="activities.html" class="hover:text-[#d4af37]">Activities</a></li>
+      <li><a href="gallery.html" class="hover:text-[#d4af37]">Gallery</a></li>
+      <li><a href="contact.html" class="hover:text-[#d4af37]">Contact</a></li>
+    </ul>
+  </div>
+</header>
 
   <!-- Hero -->
   <section class="h-[65vh] flex items-center justify-center bg-spiritual relative text-center text-white">
@@ -112,6 +133,14 @@
   <footer class="py-10 bg-spiritual text-center text-gray-300 text-sm">
     © 2025 Agneya Vishwasanthi Foundation. All Rights Reserved.
   </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobile-menu');
+      hamburger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+  </script>
 
 </body>
 </html>
