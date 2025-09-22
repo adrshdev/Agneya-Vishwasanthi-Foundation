@@ -612,6 +612,14 @@ video {
   top: 0px;
 }
 
+.bottom-4 {
+  bottom: 1rem;
+}
+
+.right-4 {
+  right: 1rem;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -681,6 +689,10 @@ video {
   margin-top: 2rem;
 }
 
+.mt-16 {
+  margin-top: 4rem;
+}
+
 .block {
   display: block;
 }
@@ -725,6 +737,14 @@ video {
   height: 100%;
 }
 
+.h-16 {
+  height: 4rem;
+}
+
+.h-32 {
+  height: 8rem;
+}
+
 .min-h-\[calc\(100vh-var\(--header-height\)\)\] {
   min-height: calc(100vh - var(--header-height));
 }
@@ -747,6 +767,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-32 {
+  width: 8rem;
 }
 
 .min-w-0 {
@@ -889,6 +913,10 @@ video {
   text-overflow: ellipsis;
 }
 
+.whitespace-normal {
+  white-space: normal;
+}
+
 .whitespace-nowrap {
   white-space: nowrap;
 }
@@ -996,6 +1024,14 @@ video {
 
 .bg-white\/95 {
   background-color: rgb(255 255 255 / 0.95);
+}
+
+.bg-\[\] {
+  background-color: ;
+}
+
+.bg-\[\#\#7b1f1f\] {
+  background-color: ##7b1f1f;
 }
 
 .bg-transparent {
@@ -1178,6 +1214,10 @@ video {
 
 .pl-6 {
   padding-left: 1.5rem;
+}
+
+.pt-20 {
+  padding-top: 5rem;
 }
 
 .text-left {
@@ -1465,8 +1505,28 @@ video {
 }
 
 @media (min-width: 640px) {
+  .sm\:bottom-8 {
+    bottom: 2rem;
+  }
+
+  .sm\:right-8 {
+    right: 2rem;
+  }
+
   .sm\:block {
     display: block;
+  }
+
+  .sm\:grid {
+    display: grid;
+  }
+
+  .sm\:h-48 {
+    height: 12rem;
+  }
+
+  .sm\:w-48 {
+    width: 12rem;
   }
 
   .sm\:grid-cols-2 {
@@ -1511,6 +1571,11 @@ video {
     font-size: 1.25rem;
     line-height: 1.75rem;
   }
+
+  .sm\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -1534,6 +1599,10 @@ video {
     margin-top: 2.5rem;
   }
 
+  .md\:mb-2 {
+    margin-bottom: 0.5rem;
+  }
+
   .md\:h-12 {
     height: 3rem;
   }
@@ -1542,12 +1611,40 @@ video {
     height: 400px;
   }
 
+  .md\:h-64 {
+    height: 16rem;
+  }
+
+  .md\:h-\[\] {
+    height: ;
+  }
+
+  .md\:h-\[400\] {
+    height: 400;
+  }
+
+  .md\:h-\[400p\] {
+    height: 400p;
+  }
+
   .md\:w-12 {
     width: 3rem;
   }
 
   .md\:w-\[400px\] {
     width: 400px;
+  }
+
+  .md\:w-64 {
+    width: 16rem;
+  }
+
+  .md\:w-\[\] {
+    width: ;
+  }
+
+  .md\:w-\[400\] {
+    width: 400;
   }
 
   .md\:max-w-3xl {
@@ -1651,5 +1748,10 @@ video {
 
   .lg\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .lg\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 }

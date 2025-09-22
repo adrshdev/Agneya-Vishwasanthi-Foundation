@@ -4,21 +4,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gallery | Agneya Vishwasanthi Foundation</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="./dist/output.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/@tailwindcss/typography"></script>
   <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    h1, h2, h3 { font-family: 'Merriweather', serif; }
+    :root {
+      --header-height: 64px; /* adjust if header height changes */
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    h1, h2, h3 {
+      font-family: 'Merriweather', serif;
+    }
     .gold-text { color: #d4af37; }
-    .bg-spiritual { background: linear-gradient(to bottom right, #7b1f1f, #f57f17); } /* maroon → saffron */
+    .bg-spiritual {
+      background: linear-gradient(to bottom right, #7b1f1f, #f57f17);
+    }
+
+    /* Logo glow */
+    .logo-glow {
+      animation: logoGlow 3s ease-in-out infinite alternate;
+    }
+    @keyframes logoGlow {
+      0% { opacity: 0.15; filter: drop-shadow(0 0 20px rgba(212,175,55,0.6)); transform: scale(1); }
+      100% { opacity: 0.25; filter: drop-shadow(0 0 40px rgba(212,175,55,0.8)); transform: scale(1.05); }
+    }
+
+    /* Intersection fade animation */
+    .animate-fade-in-up {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 700ms ease-out forwards;
+    }
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .bg-cream { background-color: #fff3e0; }
-    .animate-fade-in-up { opacity: 0; transform: translateY(20px); animation: fadeInUp 1s forwards; }
-    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-    .animate-slow-spin { animation: slowSpin 60s linear infinite; }
-    @keyframes slowSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-    
+    .focus-ring:focus { outline: 3px solid rgba(212,175,55,0.6); outline-offset: 2px; }
+  
     /* Gallery specific styles */
     .gallery-item {
       overflow: hidden;
@@ -93,66 +120,83 @@
     }
   </style>
 </head>
-<body class="bg-[#fffaf0] text-gray-900">
+<body class="bg-[#fffaf0] min-h-screen text-gray-900">
 
   <!-- Navbar -->
-  <header class="fixed top-0 w-full bg-cream/95 backdrop-blur-md shadow-md z-50 border-b border-[#d4af37]/40">
-  <nav class="container mx-auto flex justify-between items-center py-3 px-4 md:px-6">
+  <header class="fixed top-0 left-0 w-full bg-spiritual backdrop-blur-md shadow-md z-50 border-b border-[#d4af37]/40"
+        role="banner" style="height: var(--header-height)">
+  <nav class="container mx-auto flex items-center justify-between h-full px-4 md:px-6"
+       role="navigation" aria-label="Main navigation">
+    
     <!-- Logo + Title -->
-    <div class="flex items-center space-x-2 md:space-x-3 min-w-0">
-      <img src="./assets/images/agneya-01.png" alt="Logo" 
-           class="h-10 w-10 md:h-12 md:w-12 object-contain flex-shrink-0">
-      <h1 class="text-lg sm:text-xl md:text-2xl font-bold gold-text truncate whitespace-nowrap overflow-hidden text-ellipsis">
+    <a href="index.html" class="flex items-center gap-3 min-w-0 focus-ring"
+       aria-label="Agneya Vishwasanthi Foundation homepage">
+      <img src="./assets/images/agneya-01.png"
+           alt="Agneya Vishwasanthi Foundation logo"
+           width="48" height="48"
+           class="object-contain flex-shrink-0" loading="eager">
+      <span class="text-lg sm:text-xl md:text-2xl font-bold gold-text truncate">
         Agneya Vishwasanthi Foundation
-      </h1>
-    </div>
+      </span>
+    </a>
 
     <!-- Desktop Menu -->
     <div class="hidden lg:block bg-white/90 backdrop-blur-sm rounded-full px-6 py-2 shadow-lg border border-[#d4af37]/30">
-      <ul id="nav-links" class="flex space-x-6 font-medium text-[#7b1f1f]">
-        <li><a href="index.html" class="hover:text-[#d4af37] transition px-2 py-1">Home</a></li>
-        <li><a href="about.html" class="hover:text-[#d4af37] transition px-2 py-1">About</a></li>
-        <li><a href="activities.html" class="hover:text-[#d4af37] transition px-2 py-1">Activities</a></li>
-        <li><a href="gallery.html" class="hover:text-[#d4af37] transition px-2 py-1">Gallery</a></li>
-        <li><a href="contact.html" class="hover:text-[#d4af37] transition px-2 py-1">Contact</a></li>
+      <ul class="flex items-center space-x-6 font-medium text-[#7b1f1f]">
+        <li><a href="index.html" class="hover:text-[#d4af37] transition" aria-current="page">Home</a></li>
+        <li><a href="about.html" class="hover:text-[#d4af37] transition">About</a></li>
+        <li><a href="activities.html" class="hover:text-[#d4af37] transition">Activities</a></li>
+        <li><a href="gallery.html" class="hover:text-[#d4af37] transition">Gallery</a></li>
+        <li><a href="contact.html" class="hover:text-[#d4af37] transition">Contact</a></li>
       </ul>
     </div>
 
-    <!-- Mobile Menu Toggle -->
-    <button id="hamburger" class="lg:hidden text-3xl text-[#fff3e0] focus:outline-none">
-      ☰
+    <!-- Mobile Menu Button -->
+    <button id="hamburger"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+            aria-label="Open navigation"
+            class="lg:hidden p-2 rounded-md focus-ring">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7b1f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 6h18M3 12h18M3 18h18"></path>
+      </svg>
     </button>
   </nav>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden lg:hidden bg-white/95 backdrop-blur-md shadow-lg border-t border-[#d4af37]/30">
+  <div id="mobile-menu"
+       class="hidden lg:hidden bg-white/95 backdrop-blur-md shadow-lg border-t border-[#d4af37]/30"
+       role="region" aria-label="Mobile navigation">
     <ul class="flex flex-col p-4 space-y-3 text-center font-medium text-[#7b1f1f]">
-      <li><a href="index.html" class="hover:text-[#d4af37]">Home</a></li>
-      <li><a href="about.html" class="hover:text-[#d4af37]">About</a></li>
-      <li><a href="activities.html" class="hover:text-[#d4af37]">Activities</a></li>
-      <li><a href="gallery.html" class="hover:text-[#d4af37]">Gallery</a></li>
-      <li><a href="contact.html" class="hover:text-[#d4af37]">Contact</a></li>
+      <li><a href="index.html" class="hover:text-[#d4af37] block py-2">Home</a></li>
+      <li><a href="about.html" class="hover:text-[#d4af37] block py-2">About</a></li>
+      <li><a href="activities.html" class="hover:text-[#d4af37] block py-2">Activities</a></li>
+      <li><a href="gallery.html" class="hover:text-[#d4af37] block py-2">Gallery</a></li>
+      <li><a href="contact.html" class="hover:text-[#d4af37] block py-2">Contact</a></li>
     </ul>
   </div>
 </header>
 
 
   <!-- Hero -->
-  <section class="h-[65vh] flex items-center justify-center bg-spiritual relative text-center text-white">
-    <div class="absolute inset-0 bg-black/50"></div>
-    <div class="relative z-10 max-w-3xl px-6">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">
+  <section class="pt-20 h-[65vh] flex items-center justify-center bg-spiritual relative overflow-hidden text-center text-white">
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="relative z-10 max-w-3xl px-4 sm:px-6">
+      <h1 data-animate class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">
         Sacred <span class="gold-text">Moments</span>
       </h1>
-      <p class="text-lg md:text-xl opacity-95 animate-fade-in-up delay-200">
+      <p data-animate class="text-base sm:text-lg md:text-xl mb-6 md:mb-8 opacity-90 animate-fade-in-up">
         Witness the divine journey of spiritual growth, seva, and community harmony
       </p>
     </div>
-    <div class="absolute w-[300px] h-[300px] bg-[url('./assets/images/agneya-01.png')] bg-contain bg-no-repeat opacity-20"></div>
+    <div class="absolute hidden sm:block w-64 h-64 md:w-[400px] md:h-[400px]">
+      <img src="./assets/images/agneya-01.png" alt="" aria-hidden="true"
+          class="w-full h-full object-contain logo-glow opacity-20">
+    </div>
   </section>
 
   <!-- Filter Tabs -->
-  <section class="py-16 bg-cream">
+  <section class="py-20 bg-cream">
     <div class="container mx-auto px-6 text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-12 gold-text">Gallery Categories</h2>
       <div class="flex flex-wrap justify-center gap-4 mb-12">
@@ -334,7 +378,7 @@
   </section>
 
   <!-- Call to Action -->
-  <section class="py-20 bg-spiritual text-center text-white">
+  <section class="py-20 bg-[#7b1f1f] text-center text-white">
     <h2 class="text-3xl md:text-4xl font-bold mb-6">Be Part of Our Story</h2>
     <p class="max-w-xl mx-auto mb-8">
       Join our community and create beautiful memories while walking the path of Dharma
@@ -346,7 +390,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="py-10 bg-spiritual text-center text-gray-300 text-sm">
+  <footer class="py-10 bg-[#7b1f1f] text-center text-gray-300 text-sm">
     © 2025 Agneya Vishwasanthi Foundation. All Rights Reserved.
   </footer>
 
