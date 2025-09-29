@@ -3,25 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Agneya Vishwasanthi Foundation - Spreading the wisdom of Sanatana Dharma through meditation, seva, and community.">
+  <meta property="og:title" content="Agneya Vishwasanthi Foundation">
+  <meta property="og:image" content="./assets/images/agneya-01.png">
   <title>Activities | Agneya Vishwasanthi Foundation</title>
   <link href="./dist/output.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/@tailwindcss/typography"></script>
   <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
+
+
   <style>
     :root {
-      --header-height: 64px; /* adjust if header height changes */
+      --header-height: 72px;
     }
-
     body {
       font-family: 'Inter', sans-serif;
+      padding-top: var(--header-height);
+      line-height: 1.6;
     }
     h1, h2, h3 {
       font-family: 'Merriweather', serif;
     }
-    .gold-text { color: #d4af37; }
+    .gold-text { color: #c49c2d; }
     .bg-spiritual {
       background: linear-gradient(to bottom right, #7b1f1f, #f57f17);
+    }
+
+    .logo-watermark {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 80px;
+      height: 80px;
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: 40;
+      transition: opacity 0.3s ease;
+    }
+    .logo-watermark:hover {
+      opacity: 0.25;
+    }
+    @media (max-width: 640px) {
+      .logo-watermark {
+        width: 60px;
+        height: 60px;
+        bottom: 15px;
+        right: 15px;
+      }
+    }
+
+    /* Enhanced header logo */
+    .header-logo {
+      transition: transform 0.3s ease;
+    }
+    .header-logo:hover {
+      transform: scale(1.05);
+    }
+    .header-logo-pulse {
+      animation: headerPulse 3s ease-in-out infinite;
+    }
+    @keyframes headerPulse {
+      0%, 100% { filter: drop-shadow(0 0 8px rgba(212,175,55,0.4)); }
+      50% { filter: drop-shadow(0 0 16px rgba(212,175,55,0.7)); }
     }
 
     /* Logo glow */
@@ -46,11 +89,18 @@
     .bg-cream { background-color: #fff3e0; }
     .focus-ring:focus { outline: 3px solid rgba(212,175,55,0.6); outline-offset: 2px; }
   </style>
+
 </head>
+
 <body class="bg-[#fffaf0] min-h-screen text-gray-900">
 
+  <img src="./assets/images/agneya-01.png" 
+     alt="" 
+     aria-hidden="true"
+     class="logo-watermark">
+
   <!-- Navbar -->
-<header id="site-header" class="fixed top-0 left-0 w-full bg-spiritual backdrop-blur-md shadow-md z-50 border-b border-[#d4af37]/40"
+  <header class="fixed top-0 left-0 w-full bg-spiritual backdrop-blur-md shadow-md z-50 border-b border-[#d4af37]/40"
         role="banner" style="height: var(--header-height)">
   <nav class="container mx-auto flex items-center justify-between h-full px-4 md:px-6"
        role="navigation" aria-label="Main navigation">
@@ -60,8 +110,9 @@
        aria-label="Agneya Vishwasanthi Foundation homepage">
       <img src="./assets/images/agneya-01.png"
            alt="Agneya Vishwasanthi Foundation logo"
-           width="48" height="48"
-           class="object-contain flex-shrink-0" loading="eager">
+           width="64" height="64"
+           class="object-contain flex-shrink-0 header-logo header-logo-pulse" 
+           loading="eager">
       <span class="text-lg sm:text-xl md:text-2xl font-bold gold-text truncate">
         Agneya Vishwasanthi Foundation
       </span>
@@ -84,7 +135,7 @@
             aria-expanded="false"
             aria-label="Open navigation"
             class="lg:hidden p-2 rounded-md focus-ring">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7b1f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M3 6h18M3 12h18M3 18h18"></path>
       </svg>
     </button>
@@ -106,61 +157,60 @@
 
 
   <!-- Hero -->
-  <section class="pt-20 h-[65vh] flex items-center justify-center bg-spiritual relative overflow-hidden text-center text-white">
-    <div class="absolute inset-0 bg-black/40"></div>
-    <div class="relative z-10 max-w-3xl px-4 sm:px-6">
-      <h1 data-animate class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">Our <span class="gold-text">Activities</span></h1>
-      <p data-animate class="text-base sm:text-lg md:text-xl mb-6 md:mb-8 opacity-90 animate-fade-in-up">
-        Explore our spiritual programs designed to awaken consciousness, nurture devotion, and serve the community.
-      </p>
-    </div>
-    <div class="absolute hidden sm:block w-64 h-64 md:w-[400px] md:h-[400px]">
-      <img src="./assets/images/agneya-01.png" alt="" aria-hidden="true"
-          class="w-full h-full object-contain logo-glow opacity-20">
-    </div>
-  </section>
+  <main id="main-content" role="main">
+
+    <section class="pt-20 h-[65vh] flex items-center justify-center bg-spiritual relative overflow-hidden text-center text-white">
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="relative z-10 max-w-3xl px-4 sm:px-6">
+        <h1 data-animate class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">Our <span class="gold-text">Activities</span></h1>
+        <p data-animate class="text-base sm:text-lg md:text-xl mb-6 md:mb-8 opacity-90 animate-fade-in-up">Explore our spiritual programs designed to awaken consciousness, nurture devotion, and serve the community.</p>
+      </div>
+      <div class="absolute hidden sm:block w-64 h-64 md:w-[400px] md:h-[400px]">
+        <img src="./assets/images/agneya-01.png" alt="Logo Glow" class="w-full h-full object-contain logo-glow opacity-20">
+      </div>
+    </section>
 
   <!-- Activities Grid -->
-  <section class="py-20 bg-cream">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[#7b1f1f] gold-text animate-fade-in-up">Our Programs</h2>
-      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-10">
-        <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-105 transition transform duration-500 animate-fade-in-up">
-          <h3 class="text-xl font-bold mb-4">🪷 Meditation Camps</h3>
-          <p class="text-gray-700">Guided meditation sessions to calm the mind, balance energies, and connect with the divine.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-105 transition transform duration-500 animate-fade-in-up">
-          <h3 class="text-xl font-bold mb-4">🪔 Seva Programs</h3>
-          <p class="text-gray-700">Community outreach and selfless service activities inspired by Dharma.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-105 transition transform duration-500 animate-fade-in-up">
-          <h3 class="text-xl font-bold mb-4">📜 Dharma Talks</h3>
-          <p class="text-gray-700">Spiritual discourses that illuminate the eternal truths of Sanatana Dharma.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-105 transition transform duration-500 animate-fade-in-up">
-          <h3 class="text-xl font-bold mb-4">🎶 Bhakti Satsangs</h3>
-          <p class="text-gray-700">Devotional gatherings with chanting, music, and discussion on spiritual topics.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-105 transition transform duration-500 animate-fade-in-up">
-          <h3 class="text-xl font-bold mb-4">🌿 Nature Retreats</h3>
-          <p class="text-gray-700">Reconnect with nature while deepening meditation and mindfulness practices.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-105 transition transform duration-500 animate-fade-in-up">
-          <h3 class="text-xl font-bold mb-4">🎓 Workshops</h3>
-          <p class="text-gray-700">Interactive workshops on Sanatana Dharma, meditation, and spiritual lifestyle.</p>
+    <section class="py-20 bg-cream">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[#7b1f1f] gold-text animate-fade-in-up">Our Programs</h2>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-10">
+          <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-105 transition transform duration-500 animate-fade-in-up">
+            <h3 class="text-xl font-bold mb-4">🪷 Meditation Camps</h3>
+            <p class="text-gray-700">Guided meditation sessions to calm the mind, balance energies, and connect with the divine.</p>
+          </div>
+          <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-105 transition transform duration-500 animate-fade-in-up">
+            <h3 class="text-xl font-bold mb-4">🪔 Seva Programs</h3>
+            <p class="text-gray-700">Community outreach and selfless service activities inspired by Dharma.</p>
+          </div>
+          <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-105 transition transform duration-500 animate-fade-in-up">
+            <h3 class="text-xl font-bold mb-4">📜 Dharma Talks</h3>
+            <p class="text-gray-700">Spiritual discourses that illuminate the eternal truths of Sanatana Dharma.</p>
+          </div>
+          <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-105 transition transform duration-500 animate-fade-in-up">
+            <h3 class="text-xl font-bold mb-4">🎶 Bhakti Satsangs</h3>
+            <p class="text-gray-700">Devotional gatherings with chanting, music, and discussion on spiritual topics.</p>
+          </div>
+          <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-105 transition transform duration-500 animate-fade-in-up">
+            <h3 class="text-xl font-bold mb-4">🌿 Nature Retreats</h3>
+            <p class="text-gray-700">Reconnect with nature while deepening meditation and mindfulness practices.</p>
+          </div>
+          <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-105 transition transform duration-500 animate-fade-in-up">
+            <h3 class="text-xl font-bold mb-4">🎓 Workshops</h3>
+            <p class="text-gray-700">Interactive workshops on Sanatana Dharma, meditation, and spiritual lifestyle.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
   <!-- CTA -->
-  <section class="py-20 bg-[#7b1f1f] text-center text-white">
-    <h2 class="text-3xl md:text-4xl font-bold mb-6">Join Our Activities</h2>
-    <p class="max-w-xl mx-auto mb-8">
-      Participate in our programs and experience the essence of Dharma, devotion, and service.
-    </p>
-    <a href="contact.html" class="px-6 py-3 rounded-xl bg-[#d4af37] text-white font-semibold hover:bg-[#b8962c] transition">Register Now</a>
-  </section>
+    <section class="py-20 bg-[#7b1f1f] text-center text-white">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Join Our Activities</h2>
+      <p class="max-w-xl mx-auto mb-8">Participate in our programs and experience the essence of Dharma, devotion, and service.</p>
+      <a href="contact.html" class="px-6 py-3 rounded-xl bg-[#c49c2d] text-white font-semibold hover:bg-[#a88423] transition focus-ring">Register Now</a>
+    </section>
+
+  </main>
 
   <!-- Footer -->
   <footer class="py-10 bg-[#7b1f1f] text-center text-gray-300 text-sm">
@@ -170,10 +220,12 @@
 
   <script>
     const hamburger = document.getElementById('hamburger');
-      const mobileMenu = document.getElementById('mobile-menu');
-      hamburger.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', String(!expanded));
+      mobileMenu.classList.toggle('hidden');
+    });
   </script>
 
 </body>

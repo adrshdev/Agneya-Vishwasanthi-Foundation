@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Agneya Vishwasanthi Foundation - Spreading the wisdom of Sanatana Dharma through meditation, seva, and community.">
+  <meta property="og:title" content="Agneya Vishwasanthi Foundation">
+  <meta property="og:image" content="./assets/images/agneya-01.png">
   <title>Gallery | Agneya Vishwasanthi Foundation</title>
   <link href="./dist/output.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
@@ -10,7 +13,7 @@
   <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
   <style>
     :root {
-      --header-height: 64px; /* adjust if header height changes */
+      --header-height: 72px; /* adjust if header height changes */
     }
 
     body {
@@ -22,6 +25,44 @@
     .gold-text { color: #d4af37; }
     .bg-spiritual {
       background: linear-gradient(to bottom right, #7b1f1f, #f57f17);
+    }
+
+    .logo-watermark {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 80px;
+      height: 80px;
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: 40;
+      transition: opacity 0.3s ease;
+    }
+    .logo-watermark:hover {
+      opacity: 0.25;
+    }
+    @media (max-width: 640px) {
+      .logo-watermark {
+        width: 60px;
+        height: 60px;
+        bottom: 15px;
+        right: 15px;
+      }
+    }
+
+    /* Enhanced header logo */
+    .header-logo {
+      transition: transform 0.3s ease;
+    }
+    .header-logo:hover {
+      transform: scale(1.05);
+    }
+    .header-logo-pulse {
+      animation: headerPulse 3s ease-in-out infinite;
+    }
+    @keyframes headerPulse {
+      0%, 100% { filter: drop-shadow(0 0 8px rgba(212,175,55,0.4)); }
+      50% { filter: drop-shadow(0 0 16px rgba(212,175,55,0.7)); }
     }
 
     /* Logo glow */
@@ -122,6 +163,11 @@
 </head>
 <body class="bg-[#fffaf0] min-h-screen text-gray-900">
 
+  <img src="./assets/images/agneya-01.png" 
+     alt="" 
+     aria-hidden="true"
+     class="logo-watermark">
+
   <!-- Navbar -->
   <header class="fixed top-0 left-0 w-full bg-spiritual backdrop-blur-md shadow-md z-50 border-b border-[#d4af37]/40"
         role="banner" style="height: var(--header-height)">
@@ -133,8 +179,9 @@
        aria-label="Agneya Vishwasanthi Foundation homepage">
       <img src="./assets/images/agneya-01.png"
            alt="Agneya Vishwasanthi Foundation logo"
-           width="48" height="48"
-           class="object-contain flex-shrink-0" loading="eager">
+           width="64" height="64"
+           class="object-contain flex-shrink-0 header-logo header-logo-pulse" 
+           loading="eager">
       <span class="text-lg sm:text-xl md:text-2xl font-bold gold-text truncate">
         Agneya Vishwasanthi Foundation
       </span>
@@ -157,7 +204,7 @@
             aria-expanded="false"
             aria-label="Open navigation"
             class="lg:hidden p-2 rounded-md focus-ring">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7b1f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M3 6h18M3 12h18M3 18h18"></path>
       </svg>
     </button>
@@ -179,216 +226,219 @@
 
 
   <!-- Hero -->
-  <section class="pt-20 h-[65vh] flex items-center justify-center bg-spiritual relative overflow-hidden text-center text-white">
-    <div class="absolute inset-0 bg-black/40"></div>
-    <div class="relative z-10 max-w-3xl px-4 sm:px-6">
-      <h1 data-animate class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">
-        Sacred <span class="gold-text">Moments</span>
-      </h1>
-      <p data-animate class="text-base sm:text-lg md:text-xl mb-6 md:mb-8 opacity-90 animate-fade-in-up">
-        Witness the divine journey of spiritual growth, seva, and community harmony
+  <main>
+
+    <section class="pt-20 h-[65vh] flex items-center justify-center bg-spiritual relative overflow-hidden text-center text-white">
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="relative z-10 max-w-3xl px-4 sm:px-6">
+        <h1 data-animate class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">
+          Sacred <span class="gold-text">Moments</span>
+        </h1>
+        <p data-animate class="text-base sm:text-lg md:text-xl mb-6 md:mb-8 opacity-90 animate-fade-in-up">
+          Witness the divine journey of spiritual growth, seva, and community harmony
+        </p>
+      </div>
+      <div class="absolute hidden sm:block w-64 h-64 md:w-[400px] md:h-[400px]">
+        <img src="./assets/images/agneya-01.png" alt="" aria-hidden="true"
+            class="w-full h-full object-contain logo-glow opacity-20">
+      </div>
+    </section>
+
+    <!-- Filter Tabs -->
+    <section class="py-20 bg-cream">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 gold-text">Gallery Categories</h2>
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+          <button class="filter-btn px-6 py-3 rounded-xl bg-white text-[#7b1f1f] font-semibold shadow-md hover:shadow-lg active" data-filter="all">All</button>
+          <button class="filter-btn px-6 py-3 rounded-xl bg-white text-[#7b1f1f] font-semibold shadow-md hover:shadow-lg" data-filter="meditation">🪷 Meditation</button>
+          <button class="filter-btn px-6 py-3 rounded-xl bg-white text-[#7b1f1f] font-semibold shadow-md hover:shadow-lg" data-filter="seva">🪔 Seva</button>
+          <button class="filter-btn px-6 py-3 rounded-xl bg-white text-[#7b1f1f] font-semibold shadow-md hover:shadow-lg" data-filter="satsang">🎶 Satsang</button>
+          <button class="filter-btn px-6 py-3 rounded-xl bg-white text-[#7b1f1f] font-semibold shadow-md hover:shadow-lg" data-filter="retreats">🌿 Retreats</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Meditation Images -->
+          <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="meditation">
+            <div class="h-64 bg-gradient-to-br from-[#7b1f1f] to-[#f57f17] flex items-center justify-center">
+              <div class="text-white text-center p-6">
+                <div class="text-6xl mb-4">🧘‍♀️</div>
+                <h3 class="text-xl font-bold">Morning Meditation</h3>
+                <p class="text-sm opacity-90 mt-2">Daily practice at sunrise</p>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="font-semibold text-[#7b1f1f] mb-2">Peaceful Awakening</h4>
+              <p class="text-sm text-gray-600">Community meditation sessions fostering inner peace and spiritual connection</p>
+            </div>
+          </div>
+
+          <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="meditation">
+            <div class="h-64 bg-gradient-to-br from-[#f57f17] to-[#ff8f00] flex items-center justify-center">
+              <div class="text-white text-center p-6">
+                <div class="text-6xl mb-4">🕉️</div>
+                <h3 class="text-xl font-bold">Om Chanting</h3>
+                <p class="text-sm opacity-90 mt-2">Sacred sound vibrations</p>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="font-semibold text-[#7b1f1f] mb-2">Divine Resonance</h4>
+              <p class="text-sm text-gray-600">Collective chanting sessions creating harmony and spiritual elevation</p>
+            </div>
+          </div>
+
+          <!-- Seva Images -->
+          <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="seva">
+            <div class="h-64 bg-gradient-to-br from-[#7b1f1f] to-[#8d4004] flex items-center justify-center">
+              <div class="text-white text-center p-6">
+                <div class="text-6xl mb-4">🍽️</div>
+                <h3 class="text-xl font-bold">Food Distribution</h3>
+                <p class="text-sm opacity-90 mt-2">Serving the community</p>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="font-semibold text-[#7b1f1f] mb-2">Annadaan Seva</h4>
+              <p class="text-sm text-gray-600">Providing meals to the underprivileged with love and devotion</p>
+            </div>
+          </div>
+
+          <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="seva">
+            <div class="h-64 bg-gradient-to-br from-[#8d4004] to-[#f57f17] flex items-center justify-center">
+              <div class="text-white text-center p-6">
+                <div class="text-6xl mb-4">📚</div>
+                <h3 class="text-xl font-bold">Education Support</h3>
+                <p class="text-sm opacity-90 mt-2">Knowledge distribution</p>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="font-semibold text-[#7b1f1f] mb-2">Vidya Daan</h4>
+              <p class="text-sm text-gray-600">Supporting education and spiritual learning in rural communities</p>
+            </div>
+          </div>
+
+          <!-- Satsang Images -->
+          <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="satsang">
+            <div class="h-64 bg-gradient-to-br from-[#7b1f1f] to-[#d4af37] flex items-center justify-center">
+              <div class="text-white text-center p-6">
+                <div class="text-6xl mb-4">🎵</div>
+                <h3 class="text-xl font-bold">Bhajan Evening</h3>
+                <p class="text-sm opacity-90 mt-2">Devotional music</p>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="font-semibold text-[#7b1f1f] mb-2">Divine Melodies</h4>
+              <p class="text-sm text-gray-600">Community gatherings filled with devotional songs and spiritual discourse</p>
+            </div>
+          </div>
+
+          <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="satsang">
+            <div class="h-64 bg-gradient-to-br from-[#d4af37] to-[#f57f17] flex items-center justify-center">
+              <div class="text-white text-center p-6">
+                <div class="text-6xl mb-4">🪘</div>
+                <h3 class="text-xl font-bold">Kirtan Session</h3>
+                <p class="text-sm opacity-90 mt-2">Call and response</p>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="font-semibold text-[#7b1f1f] mb-2">Sacred Rhythm</h4>
+              <p class="text-sm text-gray-600">Interactive devotional singing creating unity and joy</p>
+            </div>
+          </div>
+
+          <!-- Retreat Images -->
+          <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="retreats">
+            <div class="h-64 bg-gradient-to-br from-[#2e7d32] to-[#7b1f1f] flex items-center justify-center">
+              <div class="text-white text-center p-6">
+                <div class="text-6xl mb-4">🏔️</div>
+                <h3 class="text-xl font-bold">Mountain Retreat</h3>
+                <p class="text-sm opacity-90 mt-2">Nature immersion</p>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="font-semibold text-[#7b1f1f] mb-2">Himalayan Silence</h4>
+              <p class="text-sm text-gray-600">Spiritual retreat in the sacred mountains for deep meditation</p>
+            </div>
+          </div>
+
+          <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="retreats">
+            <div class="h-64 bg-gradient-to-br from-[#1976d2] to-[#2e7d32] flex items-center justify-center">
+              <div class="text-white text-center p-6">
+                <div class="text-6xl mb-4">🌊</div>
+                <h3 class="text-xl font-bold">River Retreat</h3>
+                <p class="text-sm opacity-90 mt-2">Flowing meditation</p>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="font-semibold text-[#7b1f1f] mb-2">Sacred Waters</h4>
+              <p class="text-sm text-gray-600">Riverside meditation and purification rituals</p>
+            </div>
+          </div>
+
+          <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="meditation">
+            <div class="h-64 bg-gradient-to-br from-[#7b1f1f] to-[#9c27b0] flex items-center justify-center">
+              <div class="text-white text-center p-6">
+                <div class="text-6xl mb-4">🕯️</div>
+                <h3 class="text-xl font-bold">Candle Meditation</h3>
+                <p class="text-sm opacity-90 mt-2">Trataka practice</p>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="font-semibold text-[#7b1f1f] mb-2">Inner Light</h4>
+              <p class="text-sm text-gray-600">Focused meditation with flame gazing for concentration</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Community Moments Section -->
+    <section class="py-20 bg-cream">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 gold-text">Community Celebrations</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white rounded-2xl p-6 shadow-lg hover:scale-105 transition transform duration-300">
+            <div class="text-4xl mb-4">🎉</div>
+            <h3 class="font-semibold text-[#7b1f1f] mb-2">Festival Celebrations</h3>
+            <p class="text-sm text-gray-600">Traditional Hindu festivals celebrated with devotion</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-lg hover:scale-105 transition transform duration-300">
+            <div class="text-4xl mb-4">👨‍👩‍👧‍👦</div>
+            <h3 class="font-semibold text-[#7b1f1f] mb-2">Family Programs</h3>
+            <p class="text-sm text-gray-600">Activities that bring families together in spiritual growth</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-lg hover:scale-105 transition transform duration-300">
+            <div class="text-4xl mb-4">🌱</div>
+            <h3 class="font-semibold text-[#7b1f1f] mb-2">Youth Initiatives</h3>
+            <p class="text-sm text-gray-600">Empowering young minds with dharmic values</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-lg hover:scale-105 transition transform duration-300">
+            <div class="text-4xl mb-4">🤝</div>
+            <h3 class="font-semibold text-[#7b1f1f] mb-2">Community Outreach</h3>
+            <p class="text-sm text-gray-600">Extending our service beyond the foundation</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 bg-[#7b1f1f] text-center text-white">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Be Part of Our Story</h2>
+      <p class="max-w-xl mx-auto mb-8">
+        Join our community and create beautiful memories while walking the path of Dharma
       </p>
-    </div>
-    <div class="absolute hidden sm:block w-64 h-64 md:w-[400px] md:h-[400px]">
-      <img src="./assets/images/agneya-01.png" alt="" aria-hidden="true"
-          class="w-full h-full object-contain logo-glow opacity-20">
-    </div>
-  </section>
-
-  <!-- Filter Tabs -->
-  <section class="py-20 bg-cream">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-12 gold-text">Gallery Categories</h2>
-      <div class="flex flex-wrap justify-center gap-4 mb-12">
-        <button class="filter-btn px-6 py-3 rounded-xl bg-white text-[#7b1f1f] font-semibold shadow-md hover:shadow-lg active" data-filter="all">All</button>
-        <button class="filter-btn px-6 py-3 rounded-xl bg-white text-[#7b1f1f] font-semibold shadow-md hover:shadow-lg" data-filter="meditation">🪷 Meditation</button>
-        <button class="filter-btn px-6 py-3 rounded-xl bg-white text-[#7b1f1f] font-semibold shadow-md hover:shadow-lg" data-filter="seva">🪔 Seva</button>
-        <button class="filter-btn px-6 py-3 rounded-xl bg-white text-[#7b1f1f] font-semibold shadow-md hover:shadow-lg" data-filter="satsang">🎶 Satsang</button>
-        <button class="filter-btn px-6 py-3 rounded-xl bg-white text-[#7b1f1f] font-semibold shadow-md hover:shadow-lg" data-filter="retreats">🌿 Retreats</button>
+      <div class="space-x-4">
+        <a href="activities.html" class="px-6 py-3 rounded-xl bg-[#d4af37] text-white font-semibold hover:bg-[#b8962c] transition">Join Activities</a>
+        <a href="#contact" class="px-6 py-3 rounded-xl border border-[#d4af37] text-[#d4af37] font-semibold hover:bg-[#d4af37] hover:text-white transition">Contact Us</a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Gallery Grid -->
-  <section class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-      <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        
-        <!-- Meditation Images -->
-        <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="meditation">
-          <div class="h-64 bg-gradient-to-br from-[#7b1f1f] to-[#f57f17] flex items-center justify-center">
-            <div class="text-white text-center p-6">
-              <div class="text-6xl mb-4">🧘‍♀️</div>
-              <h3 class="text-xl font-bold">Morning Meditation</h3>
-              <p class="text-sm opacity-90 mt-2">Daily practice at sunrise</p>
-            </div>
-          </div>
-          <div class="p-6">
-            <h4 class="font-semibold text-[#7b1f1f] mb-2">Peaceful Awakening</h4>
-            <p class="text-sm text-gray-600">Community meditation sessions fostering inner peace and spiritual connection</p>
-          </div>
-        </div>
-
-        <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="meditation">
-          <div class="h-64 bg-gradient-to-br from-[#f57f17] to-[#ff8f00] flex items-center justify-center">
-            <div class="text-white text-center p-6">
-              <div class="text-6xl mb-4">🕉️</div>
-              <h3 class="text-xl font-bold">Om Chanting</h3>
-              <p class="text-sm opacity-90 mt-2">Sacred sound vibrations</p>
-            </div>
-          </div>
-          <div class="p-6">
-            <h4 class="font-semibold text-[#7b1f1f] mb-2">Divine Resonance</h4>
-            <p class="text-sm text-gray-600">Collective chanting sessions creating harmony and spiritual elevation</p>
-          </div>
-        </div>
-
-        <!-- Seva Images -->
-        <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="seva">
-          <div class="h-64 bg-gradient-to-br from-[#7b1f1f] to-[#8d4004] flex items-center justify-center">
-            <div class="text-white text-center p-6">
-              <div class="text-6xl mb-4">🍽️</div>
-              <h3 class="text-xl font-bold">Food Distribution</h3>
-              <p class="text-sm opacity-90 mt-2">Serving the community</p>
-            </div>
-          </div>
-          <div class="p-6">
-            <h4 class="font-semibold text-[#7b1f1f] mb-2">Annadaan Seva</h4>
-            <p class="text-sm text-gray-600">Providing meals to the underprivileged with love and devotion</p>
-          </div>
-        </div>
-
-        <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="seva">
-          <div class="h-64 bg-gradient-to-br from-[#8d4004] to-[#f57f17] flex items-center justify-center">
-            <div class="text-white text-center p-6">
-              <div class="text-6xl mb-4">📚</div>
-              <h3 class="text-xl font-bold">Education Support</h3>
-              <p class="text-sm opacity-90 mt-2">Knowledge distribution</p>
-            </div>
-          </div>
-          <div class="p-6">
-            <h4 class="font-semibold text-[#7b1f1f] mb-2">Vidya Daan</h4>
-            <p class="text-sm text-gray-600">Supporting education and spiritual learning in rural communities</p>
-          </div>
-        </div>
-
-        <!-- Satsang Images -->
-        <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="satsang">
-          <div class="h-64 bg-gradient-to-br from-[#7b1f1f] to-[#d4af37] flex items-center justify-center">
-            <div class="text-white text-center p-6">
-              <div class="text-6xl mb-4">🎵</div>
-              <h3 class="text-xl font-bold">Bhajan Evening</h3>
-              <p class="text-sm opacity-90 mt-2">Devotional music</p>
-            </div>
-          </div>
-          <div class="p-6">
-            <h4 class="font-semibold text-[#7b1f1f] mb-2">Divine Melodies</h4>
-            <p class="text-sm text-gray-600">Community gatherings filled with devotional songs and spiritual discourse</p>
-          </div>
-        </div>
-
-        <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="satsang">
-          <div class="h-64 bg-gradient-to-br from-[#d4af37] to-[#f57f17] flex items-center justify-center">
-            <div class="text-white text-center p-6">
-              <div class="text-6xl mb-4">🪘</div>
-              <h3 class="text-xl font-bold">Kirtan Session</h3>
-              <p class="text-sm opacity-90 mt-2">Call and response</p>
-            </div>
-          </div>
-          <div class="p-6">
-            <h4 class="font-semibold text-[#7b1f1f] mb-2">Sacred Rhythm</h4>
-            <p class="text-sm text-gray-600">Interactive devotional singing creating unity and joy</p>
-          </div>
-        </div>
-
-        <!-- Retreat Images -->
-        <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="retreats">
-          <div class="h-64 bg-gradient-to-br from-[#2e7d32] to-[#7b1f1f] flex items-center justify-center">
-            <div class="text-white text-center p-6">
-              <div class="text-6xl mb-4">🏔️</div>
-              <h3 class="text-xl font-bold">Mountain Retreat</h3>
-              <p class="text-sm opacity-90 mt-2">Nature immersion</p>
-            </div>
-          </div>
-          <div class="p-6">
-            <h4 class="font-semibold text-[#7b1f1f] mb-2">Himalayan Silence</h4>
-            <p class="text-sm text-gray-600">Spiritual retreat in the sacred mountains for deep meditation</p>
-          </div>
-        </div>
-
-        <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="retreats">
-          <div class="h-64 bg-gradient-to-br from-[#1976d2] to-[#2e7d32] flex items-center justify-center">
-            <div class="text-white text-center p-6">
-              <div class="text-6xl mb-4">🌊</div>
-              <h3 class="text-xl font-bold">River Retreat</h3>
-              <p class="text-sm opacity-90 mt-2">Flowing meditation</p>
-            </div>
-          </div>
-          <div class="p-6">
-            <h4 class="font-semibold text-[#7b1f1f] mb-2">Sacred Waters</h4>
-            <p class="text-sm text-gray-600">Riverside meditation and purification rituals</p>
-          </div>
-        </div>
-
-        <div class="gallery-item bg-cream rounded-2xl shadow-lg overflow-hidden" data-category="meditation">
-          <div class="h-64 bg-gradient-to-br from-[#7b1f1f] to-[#9c27b0] flex items-center justify-center">
-            <div class="text-white text-center p-6">
-              <div class="text-6xl mb-4">🕯️</div>
-              <h3 class="text-xl font-bold">Candle Meditation</h3>
-              <p class="text-sm opacity-90 mt-2">Trataka practice</p>
-            </div>
-          </div>
-          <div class="p-6">
-            <h4 class="font-semibold text-[#7b1f1f] mb-2">Inner Light</h4>
-            <p class="text-sm text-gray-600">Focused meditation with flame gazing for concentration</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Community Moments Section -->
-  <section class="py-20 bg-cream">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-12 gold-text">Community Celebrations</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white rounded-2xl p-6 shadow-lg hover:scale-105 transition transform duration-300">
-          <div class="text-4xl mb-4">🎉</div>
-          <h3 class="font-semibold text-[#7b1f1f] mb-2">Festival Celebrations</h3>
-          <p class="text-sm text-gray-600">Traditional Hindu festivals celebrated with devotion</p>
-        </div>
-        <div class="bg-white rounded-2xl p-6 shadow-lg hover:scale-105 transition transform duration-300">
-          <div class="text-4xl mb-4">👨‍👩‍👧‍👦</div>
-          <h3 class="font-semibold text-[#7b1f1f] mb-2">Family Programs</h3>
-          <p class="text-sm text-gray-600">Activities that bring families together in spiritual growth</p>
-        </div>
-        <div class="bg-white rounded-2xl p-6 shadow-lg hover:scale-105 transition transform duration-300">
-          <div class="text-4xl mb-4">🌱</div>
-          <h3 class="font-semibold text-[#7b1f1f] mb-2">Youth Initiatives</h3>
-          <p class="text-sm text-gray-600">Empowering young minds with dharmic values</p>
-        </div>
-        <div class="bg-white rounded-2xl p-6 shadow-lg hover:scale-105 transition transform duration-300">
-          <div class="text-4xl mb-4">🤝</div>
-          <h3 class="font-semibold text-[#7b1f1f] mb-2">Community Outreach</h3>
-          <p class="text-sm text-gray-600">Extending our service beyond the foundation</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Call to Action -->
-  <section class="py-20 bg-[#7b1f1f] text-center text-white">
-    <h2 class="text-3xl md:text-4xl font-bold mb-6">Be Part of Our Story</h2>
-    <p class="max-w-xl mx-auto mb-8">
-      Join our community and create beautiful memories while walking the path of Dharma
-    </p>
-    <div class="space-x-4">
-      <a href="activities.html" class="px-6 py-3 rounded-xl bg-[#d4af37] text-white font-semibold hover:bg-[#b8962c] transition">Join Activities</a>
-      <a href="#contact" class="px-6 py-3 rounded-xl border border-[#d4af37] text-[#d4af37] font-semibold hover:bg-[#d4af37] hover:text-white transition">Contact Us</a>
-    </div>
-  </section>
-
+  </main>
   <!-- Footer -->
   <footer class="py-10 bg-[#7b1f1f] text-center text-gray-300 text-sm">
     © 2025 Agneya Vishwasanthi Foundation. All Rights Reserved.
